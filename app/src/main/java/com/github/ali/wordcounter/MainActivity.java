@@ -1,6 +1,7 @@
 package com.github.ali.wordcounter;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText mEditText;
     Button mButton;
-    TextView mTextView;
+
     String sentence;
     String delimiter = " ";
     int words_count;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         mEditText = findViewById(R.id.editText);
         mButton = findViewById(R.id.button);
-        mTextView = findViewById(R.id.textView);
+
 
         // loca variable to store edit text content
 
@@ -53,8 +54,11 @@ public class MainActivity extends AppCompatActivity {
                                     dialog.cancel();
                                 }
                             });
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+                }
 
-                } else {
+                else {
 
 
                     StringTokenizer tokenizer = new StringTokenizer(sentence, delimiter);
@@ -81,9 +85,20 @@ public class MainActivity extends AppCompatActivity {
                                     dialog.cancel();
                                 }
                             });
+
+
+                    Intent to_resultActivity = new Intent(MainActivity.this,ResultActivity.class);
+
+                    // will put send our data via "putExtra"
+
+                    to_resultActivity.putExtra("sentence",sentence);
+                    to_resultActivity.putExtra("characters",total_token_length);
+                    to_resultActivity.putExtra("words",words_count);
+
+                    startActivity(to_resultActivity);
+
                 }
-                AlertDialog alert11 = builder1.create();
-                alert11.show();
+
 
             }
         });

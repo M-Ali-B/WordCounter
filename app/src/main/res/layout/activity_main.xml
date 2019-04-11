@@ -27,15 +27,6 @@
             android:layout_gravity="center"
             android:text="Count" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="bottom|center"
-            android:hint="Results of your count request will be here "
-            android:layout_marginTop="20dp"
-            />
-
     </LinearLayout>
 
 </RelativeLayout>
